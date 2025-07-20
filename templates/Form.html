@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Used Car Price & Lifetime Prediction</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+  </head>
+  <body>
+    <!-- Background slideshow divs -->
+    <div id="bg-slideshow-a"></div>
+    <div id="bg-slideshow-b"></div>
+
+    <div class="center-container">
+      <form id="carForm" action="/submit" method="POST">
+        <h2>Used Car Price & Lifetime Prediction</h2>
+
+        {% if alert_message %}
+        <script>
+          window.onload = function () {
+            alert("{{ alert_message }}");
+          };
+        </script>
+        {% endif %}
+
+        <label for="brand">Brand:</label>
+        <select id="brand" name="brand" required>
+          <option value="">Select Brand</option>
+          <option value="Ashok Leyland">Ashok Leyland</option>
+          <option value="Audi">Audi</option>
+          <option value="BMW">BMW</option>
+          <option value="BYD">BYD</option>
+          <option value="Citroën">Citroën</option>
+          <option value="Force Motors">Force Motors</option>
+          <option value="Ford">Ford</option>
+          <option value="Honda">Honda</option>
+          <option value="Hyundai">Hyundai</option>
+          <option value="Isuzu">Isuzu</option>
+          <option value="Jaguar">Jaguar</option>
+          <option value="Jeep">Jeep</option>
+          <option value="Kia">Kia</option>
+          <option value="Lexus">Lexus</option>
+          <option value="Mahindra">Mahindra</option>
+          <option value="Maruti Suzuki">Maruti Suzuki</option>
+          <option value="Mercedes-Benz">Mercedes-Benz</option>
+          <option value="MG">MG</option>
+          <option value="Mini">Mini</option>
+          <option value="Nissan">Nissan</option>
+          <option value="Renault">Renault</option>
+          <option value="Skoda">Skoda</option>
+          <option value="Tata">Tata</option>
+          <option value="Toyota">Toyota</option>
+          <option value="Volkswagen">Volkswagen</option>
+          <option value="Volvo">Volvo</option>
+        </select>
+
+        <label for="model">Model:</label>
+        <input
+          type="text"
+          id="model"
+          name="model"
+          placeholder="Enter car model"
+          required
+        />
+
+        <label for="year">Manufacturing Year:</label>
+        <input type="date" id="year" name="year" required />
+
+        <label for="fuel">Fuel Type:</label>
+        <select id="fuel" name="fuel" required>
+          <option value="">Select Fuel Type</option>
+          <option value="Petrol">Petrol</option>
+          <option value="Diesel">Diesel</option>
+          <option value="CNG">CNG</option>
+          <option value="Electric">Electric</option>
+        </select>
+
+        <label for="mileage">Mileage (km):</label>
+        <input
+          type="number"
+          id="mileage"
+          name="mileage"
+          min="0"
+          placeholder="Enter mileage"
+          required
+        />
+
+        <label>Transmission:</label>
+        <div class="radio-group">
+          <label
+            ><input type="radio" name="transmission" value="Manual" required />
+            Manual</label
+          >
+          <label
+            ><input
+              type="radio"
+              name="transmission"
+              value="Automatic"
+              required
+            />
+            Automatic</label
+          >
+        </div>
+
+        <button type="submit">Predict Price & Lifetime</button>
+      </form>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  </body>
+</html>

@@ -1,0 +1,313 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100vh;
+  font-family: "Roboto", sans-serif;
+  color: #000;
+}
+
+body {
+  background: #111;
+  background-image: url('/static/images/Car_1.webp');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  color: #000;
+}
+
+.center-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+h2 {
+  text-align: center;
+  margin-top: 24px;
+  margin-bottom: 12px;
+  color: #000;
+  font-size: 1.3rem;
+  letter-spacing: 1px;
+}
+
+label,
+h2 {
+  color: #000;
+  text-shadow: 0 1px 4px #fff8;
+}
+
+/* ===== FORM STYLES ===== */
+form#carForm {
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  max-width: 320px;
+  margin: 16px auto 0 auto;
+  padding: 18px 16px 14px 16px;
+  border-radius: 16px;
+  box-shadow: 0 2px 16px rgba(44, 62, 80, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+}
+
+label {
+  font-weight: 500;
+  color: #000;
+  margin-bottom: 2px;
+  font-size: 0.98rem;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+select {
+  padding: 7px 9px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 1rem;
+  background: #f9fafb;
+  transition: border 0.2s;
+  margin-bottom: 6px;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="date"]:focus,
+select:focus {
+  border: 1.5px solid #0077ff;
+  outline: none;
+  background: #fff;
+}
+
+.radio-group {
+  display: flex;
+  gap: 18px;
+  margin-bottom: 8px;
+}
+
+.radio-group label {
+  font-weight: 400;
+  color: #000;
+  font-size: 0.97rem;
+}
+
+button[type="submit"] {
+  background: #0077ff;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 9px 0;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background 0.2s;
+}
+
+button[type="submit"]:hover {
+  background: #005fcc;
+}
+
+.success-message {
+  background: #d4edda;
+  color: #155724;
+  padding: 8px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+#result {
+  max-width: 320px;
+  margin: 12px auto 0 auto;
+  padding: 12px;
+  background: #eaf6ff;
+  border-radius: 8px;
+  color: #0077ff;
+  font-weight: 500;
+  text-align: center;
+  display: none;
+}
+
+/* ===== BACKGROUND SLIDESHOW ===== */
+#bg-slideshow-a,
+#bg-slideshow-b {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  transition: opacity 2s ease-in-out;
+  opacity: 0;
+  pointer-events: none;
+}
+
+#bg-slideshow-a.active,
+#bg-slideshow-b.active {
+  opacity: 1;
+}
+
+/* ===== COMPONENTS ===== */
+/* Button Components */
+.btn-primary {
+  background: linear-gradient(135deg, #0077ff, #005fcc);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 119, 255, 0.3);
+}
+
+/* Card Components */
+.card {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+}
+
+/* Loading Spinner */
+.spinner {
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top: 4px solid #0077ff;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+/* Modal Components */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Field Error Styling */
+.field-error {
+  color: #dc3545;
+  font-size: 0.875rem;
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes slideInFromTop {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Animation Utility Classes */
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.animate-slideInTop {
+  animation: slideInFromTop 0.6s ease-out;
+}
+
+.animate-slideInBottom {
+  animation: slideInFromBottom 0.6s ease-out;
+}
+
+.animate-pulse {
+  animation: pulse 2s infinite;
+}
+
+.animate-bounce {
+  animation: bounce 1s infinite;
+}
+
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 500px) {
+  form#carForm,
+  #result {
+    max-width: 96vw;
+    padding: 10px 2vw 10px 2vw;
+  }
+  h2 {
+    font-size: 1.1rem;
+    margin-top: 14px;
+  }
+}
